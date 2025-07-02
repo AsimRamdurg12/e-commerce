@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     domains: ["fakestoreapi.com"],
     remotePatterns: [new URL("https://fakestoreapi.com/products/**")],
   },
+  devIndicators: false,
 };
 
 export default nextConfig;

@@ -1,0 +1,11 @@
+import Formfields from "./Formfields";
+
+const Page = () => {
+  return (
+    <div className="pt-20 max-w-7xl mx-auto">
+      <Formfields />
+    </div>
+  );
+};
+
+export default Page;
