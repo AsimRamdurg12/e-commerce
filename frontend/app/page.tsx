@@ -1,11 +1,11 @@
-import Navbar from "@/components/Navbar";
 import Products from "@/components/Products";
 
 export default function Home() {
   return (
     <div className="min-h-screen w-full">
-      <Navbar />
-      <Products />
+      <div className="max-w-7xl mx-auto">
+        <Products />
+      </div>
     </div>
   );
 }

@@ -13,7 +13,7 @@ const Navbar = () => {
   console.log(products);
 
   return (
-    <nav className="flex justify-between items-center px-4 py-2 border-b">
+    <nav className="fixed z-1 bg-white w-full flex justify-between items-center px-4 py-2 border-b">
       <Link href="/">
         <Image
           priority

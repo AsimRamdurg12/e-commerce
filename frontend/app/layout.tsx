@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import QueryProvider from "@/lib/QueryClient";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "E-commerce App",
@@ -14,8 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        <QueryProvider>{children}</QueryProvider>
+      <body className="antialiased bg-gray-100">
+        <QueryProvider>
+          <Navbar />
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );
