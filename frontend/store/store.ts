@@ -1,3 +1,4 @@
+import { Product } from "@/types/product";
 import { create } from "zustand";
 
 export interface Store {
@@ -13,3 +14,12 @@ export const useStore = create<Store>((set) => ({
   setSearchTerm: (term) => set({ searchTerm: term }),
   setSelectedCategory: (category) => set({ selectedCategory: category }),
 }));
+
+export interface CartItem extends Product {
+  addToCart: (s: string) => void;
+  removeFromCart: (s: string) => void;
+  increaseQuantity: (s: string) => void;
+  decreaseQuantity: (s: string) => void;
+}
+
+const;

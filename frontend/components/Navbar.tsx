@@ -28,7 +28,7 @@ const Navbar = () => {
       </Link>
       <div className="flex border w-1/2 rounded-lg focus-within:ring-2 focus-within:ring-yellow-500">
         <select
-          className="w-1/4 px-2 py-1 focus:outline-none"
+          className="w-1/4 md:w-14 px-2 py-1 focus:outline-none"
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
         >

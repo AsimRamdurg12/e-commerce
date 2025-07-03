@@ -5,16 +5,22 @@ import { colors, size } from "@/lib/constants";
 import Image from "next/image";
 import { BiLoader } from "react-icons/bi";
 import Button from "./ui/Button";
+import { useState } from "react";
 
-const ProductPage = ({ id }: { id: string }) => {
+const ProductPage = ({ id }: { id: number }) => {
   const { products, isLoading, isError, error } = useProduct(
     "productbyId",
     `/products/${id}`
   );
 
+  const [variants, setVariants] = useState({
+    c: "bg-black",
+    s: "XL",
+  });
+
   if (isError) {
     return (
-      <div className="min-h-screen w-full flex justify-center items-center animate-spin">
+      <div className="min-h-screen border w-full flex justify-center items-center animate-spin">
         {error?.message}
       </div>
     );
@@ -25,7 +31,7 @@ const ProductPage = ({ id }: { id: string }) => {
       <BiLoader size={30} />
     </div>
   ) : (
-    <section className="pt-20 px-4 py-8 space-y-4">
+    <section className="space-y-4">
       <div>
         <p className="font-bold font-serif">{`Home > ${products.category}`}</p>
       </div>
@@ -46,8 +52,8 @@ const ProductPage = ({ id }: { id: string }) => {
           <div className="flex justify-between">
             <h4 className="text-2xl font-semibold">${products.price}</h4>
             <div>
-              <p>{products.rating.rate}</p>
-              <p>{products.rating.count} ratings</p>
+              <p className="font-medium">{products.rating.rate} ⭐</p>
+              <p className="font-medium">{products.rating.count} ratings</p>
             </div>
           </div>
           <h3 className="text-xl font-medium">Description:</h3>
@@ -55,24 +61,36 @@ const ProductPage = ({ id }: { id: string }) => {
           <div>
             <div className="flex flex-col gap-2">
               <h5 className="font-medium">Color:</h5>
-              <div className="flex gap-4">
-                {colors.map((color) => (
-                  <div
+              <div className="flex items-center gap-4">
+                {colors.map((color: string) => (
+                  <button
                     key={color}
-                    className={`${color} shadow rounded-lg size-10`}
-                  ></div>
+                    className={`${
+                      variants.c === color && "border-2 rounded-xl p-0.5"
+                    } cursor-pointer`}
+                  >
+                    <div
+                      onClick={() =>
+                        setVariants((prev) => ({ ...prev, c: color }))
+                      }
+                      className={`${color}  shadow rounded-lg size-10 `}
+                    ></div>
+                  </button>
                 ))}
               </div>
 
               <h5 className="font-medium">Size:</h5>
               <div className="flex items-center gap-4">
-                {size.map((s) => (
-                  <div
+                {size.map((s: string) => (
+                  <button
+                    onClick={() => setVariants((prev) => ({ ...prev, s: s }))}
                     key={s}
-                    className="size-10 p-2 rounded border text-center"
+                    className={`size-10 p-2 rounded-lg border text-center ${
+                      variants.s === s && "bg-gray-200"
+                    }`}
                   >
                     {s}
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
