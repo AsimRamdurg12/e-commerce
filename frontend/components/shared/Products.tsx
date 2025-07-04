@@ -3,7 +3,7 @@ import { useProduct } from "@/hooks/useProduct";
 import { Product } from "@/types/product";
 import { RiLoader4Line } from "react-icons/ri";
 import ProductCard from "./ProductCard";
-import { useStore } from "../store/store";
+import { useStore } from "../../store/store";
 import { useState } from "react";
 import ProductPage from "./ProductPage";
 

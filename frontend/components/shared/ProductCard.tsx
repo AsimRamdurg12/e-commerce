@@ -2,7 +2,7 @@
 
 import { Product } from "@/types/product";
 import Image from "next/image";
-import Button from "./ui/Button";
+import CartControls from "./CartControls";
 
 interface ProductCardProps {
   product: Product;
@@ -46,12 +46,13 @@ export default function ProductCard({ product, setModal }: ProductCardProps) {
       </div>
 
       {/* CTA Button */}
-      <Button
+      {/* <Button
         onClick={() => alert("Added to cart")}
         className="mt-4 font-inter bg-indigo-500 hover:bg-indigo-600 text-white w-full py-2 rounded-lg transition"
       >
         Add to Cart
-      </Button>
+      </Button> */}
+      <CartControls product={product} />
     </div>
   );
 }

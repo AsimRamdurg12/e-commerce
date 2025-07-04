@@ -5,7 +5,7 @@ import Link from "next/link";
 import logo from "@/assets/logo.svg";
 import { useProduct } from "@/hooks/useProduct";
 import { CgSearch, CgShoppingCart } from "react-icons/cg";
-import Button from "./ui/Button";
+import Button from "../ui/Button";
 import { useCartStore, useStore } from "@/store/store";
 import { useRouter } from "next/navigation";
 

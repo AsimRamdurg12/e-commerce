@@ -1,36 +1,55 @@
+"use client";
+
+import { useCartStore } from "@/store/store";
 import CartCard from "./CartCard";
 import Checkout from "./Checkout";
 import InfoCard from "./InfoCard";
+import Link from "next/link";
+import { InfoCardConstants } from "@/lib/constants";
 
-const Cartpage = () => {
+const CartPage = () => {
+  const { cart } = useCartStore();
+
   return (
-    <div className="pt-24 pb-16 px-4 md:px-8 min-h-screen max-w-7xl mx-auto space-y-10">
-      <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 font-poppins">
-        Checkout
-      </h2>
+    <main className="pt-20 pb-8 px-4 max-w-7xl mx-auto space-y-8">
+      <h1 className="text-3xl md:text-4xl font-bold font-poppins">Your Cart</h1>
 
-      {/* Main Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Cart Section */}
-        <div className="md:col-span-2 bg-white rounded-2xl shadow-lg border border-gray-200 p-4 max-h-[70vh] overflow-y-auto">
-          {[...Array(10).keys()].map((a) => (
-            <CartCard key={a} />
-          ))}
+      {cart.length === 0 ? (
+        <div className="text-center text-gray-500 font-medium py-16">
+          <p className="text-xl font-poppins">Your cart is empty 🛒</p>
+          <Link
+            href="/"
+            className="text-yellow-500 font-semibold underline mt-2 inline-block"
+          >
+            Continue Shopping
+          </Link>
         </div>
+      ) : (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+            {/* Cart Items */}
+            <div className="col-span-2 bg-white rounded-3xl drop-shadow-md border border-gray-300">
+              {cart.map((item) => (
+                <CartCard key={item.id} product={item} />
+              ))}
+            </div>
 
-        {/* Checkout Section */}
-        <Checkout />
-      </div>
+            {/* Checkout */}
+            <div className="w-full">
+              <Checkout />
+            </div>
+          </div>
 
-      {/* Info Cards */}
-      <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
-        <InfoCard />
-        <InfoCard />
-        <InfoCard />
-        <InfoCard />
-      </div>
-    </div>
+          {/* Info Section */}
+          <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {InfoCardConstants.map((info) => (
+              <InfoCard key={info.title} info={info} />
+            ))}
+          </div>
+        </>
+      )}
+    </main>
   );
 };
 
-export default Cartpage;
+export default CartPage;
