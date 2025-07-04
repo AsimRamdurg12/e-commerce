@@ -112,7 +112,9 @@ const Formfields = () => {
             className="border px-4 py-2 rounded-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-yellow-500"
           />
           {errors.image && (
-            <p className="text-xs text-red-500">{errors.image.message}</p>
+            <p className="text-xs text-red-500">
+              {errors.image.message?.toString()}
+            </p>
           )}
         </div>
 
