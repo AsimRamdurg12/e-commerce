@@ -3,9 +3,9 @@
 import { useProduct } from "@/hooks/useProduct";
 import { colors, size } from "@/lib/constants";
 import Image from "next/image";
-import { BiLoader } from "react-icons/bi";
 import Button from "./ui/Button";
 import { useState } from "react";
+import { RiLoader4Line } from "react-icons/ri";
 
 const ProductPage = ({ id }: { id: number }) => {
   const { products, isLoading, isError, error } = useProduct(
@@ -28,7 +28,7 @@ const ProductPage = ({ id }: { id: number }) => {
 
   return isLoading ? (
     <div className="h-full w-full flex justify-center items-center">
-      <BiLoader size={30} className="animate-spin" />
+      <RiLoader4Line size={30} className="animate-spin" />
     </div>
   ) : products ? (
     <section className="space-y-4">

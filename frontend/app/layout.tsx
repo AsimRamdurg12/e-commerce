@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import QueryProvider from "@/lib/QueryClient";
-import Navbar from "@/components/Navbar";
+import { Inter, Poppins } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  weight: ["400", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "E-commerce App",
@@ -15,9 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-gray-100">
+      <body
+        className={`${inter.variable} ${poppins.variable} antialiased bg-gray-100`}
+      >
         <QueryProvider>
-          <Navbar />
           {children}
         </QueryProvider>
       </body>

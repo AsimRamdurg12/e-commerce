@@ -11,28 +11,32 @@ import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const { products } = useProduct("categories", "/products/categories");
-
   const { searchTerm, selectedCategory, setSearchTerm, setSelectedCategory } =
     useStore();
-
   const { cart } = useCartStore();
   const router = useRouter();
 
   return (
-    <nav className="fixed z-1 bg-white w-full flex justify-between items-center px-4 py-2 border-b">
-      <Link href="/">
+    <nav className="font-inter fixed top-0 left-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm px-4 py-3 flex items-center justify-between">
+      {/* Logo */}
+      <Link href="/" className="flex items-center gap-2">
         <Image
           priority
           src={logo}
           alt="logo"
-          height={40}
-          width={40}
+          height={36}
+          width={36}
           className="rounded-full"
         />
+        <span className="text-lg font-bold hidden md:block text-gray-800">
+          ShopEasy
+        </span>
       </Link>
-      <div className="flex border w-1/2 rounded-lg focus-within:ring-2 focus-within:ring-yellow-500">
+
+      {/* Search + Filter */}
+      <div className="hidden sm:flex border border-gray-300 w-1/2 rounded-lg overflow-hidden shadow-sm">
         <select
-          className="w-1/4 md:w-14 px-2 py-1 focus:outline-none"
+          className="bg-white text-sm px-3 py-2 border-r border-gray-200 outline-none"
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
         >
@@ -43,23 +47,31 @@ const Navbar = () => {
             </option>
           ))}
         </select>
+
         <input
           type="text"
-          className="w-full focus-within:outline-none"
+          className="w-full px-3 py-2 text-sm outline-none"
+          placeholder="Search products..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <Button className="">
-          <CgSearch />
+
+        <Button className="bg-yellow-500 hover:bg-yellow-600 text-white px-4">
+          <CgSearch size={20} />
         </Button>
       </div>
 
+      {/* Cart */}
       <Button
-        className="flex items-center"
-        onClick={() => router.replace("/cart")}
+        className="relative flex items-center gap-1 px-3 py-2 bg-gray-900 hover:bg-black text-white rounded-lg"
+        onClick={() => router.push("/cart")}
       >
-        <CgShoppingCart />
-        <p className="">{cart.length}</p>
+        <CgShoppingCart size={20} />
+        {cart.length > -1 && (
+          <span className="font-poppins absolute -top-1 -right-1 bg-red-500 text-xs text-white w-5 h-5 flex items-center justify-center rounded-full">
+            {cart.length}
+          </span>
+        )}
       </Button>
     </nav>
   );

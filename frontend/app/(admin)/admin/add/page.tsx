@@ -2,7 +2,7 @@ import Formfields from "./Formfields";
 
 const Page = () => {
   return (
-    <div className="pt-20 max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto">
       <Formfields />
     </div>
   );

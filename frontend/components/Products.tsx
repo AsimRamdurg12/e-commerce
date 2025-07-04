@@ -36,7 +36,7 @@ const Products = () => {
 
   return isLoading ? (
     <div className="min-h-screen w-full flex justify-center items-center">
-      <RiLoader4Line className="animate-spin" />
+      <RiLoader4Line size={50} className="animate-spin" />
     </div>
   ) : (
     <div className="relative grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-20 pb-10 mx-4">

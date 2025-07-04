@@ -56,13 +56,15 @@ const Formfields = () => {
 
   return isLoading ? (
     <div className="min-h-screen w-full flex justify-center items-center">
-      <RiLoader4Line className="animate-spin" />
+      <RiLoader4Line size={50} className="animate-spin" />
     </div>
   ) : (
     <form
       onSubmit={handleSubmit(handleFormSubmit)}
       className="flex flex-col gap-4 mx-4"
     >
+      <h2 className="text-2xl font-poppins font-bold mb-4">Add New Product</h2>
+
       <Input
         type="text"
         label="Title"
@@ -75,10 +77,10 @@ const Formfields = () => {
       )}
 
       <div className="flex flex-col gap-2">
-        <label className="font-medium">Category</label>
+        <label className="font-semibold font-poppins">Category</label>
         <select
           {...register("category")}
-          className="border px-4 py-2 rounded-lg"
+          className="border px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
         >
           <option value="">Select Category</option>
           {products?.map((product: string) => (
@@ -101,13 +103,13 @@ const Formfields = () => {
 
       <div>
         <div className="flex flex-col gap-2">
-          <label className="font-medium">Image</label>
+          <label className="font-semibold font-poppins">Image</label>
           <input
             type="file"
             accept="image/*"
             {...register("image")}
             onChange={handleImageUpload}
-            className="border px-4 py-2 rounded-lg"
+            className="border px-4 py-2 rounded-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-yellow-500"
           />
           {errors.image && (
             <p className="text-xs text-red-500">{errors.image.message}</p>
@@ -115,28 +117,31 @@ const Formfields = () => {
         </div>
 
         {image && (
-          <div className="w-fit border m-4">
+          <div className="w-fit mt-4 border rounded-lg p-2">
             <Image
               src={image}
               alt="image"
               width={300}
               height={300}
-              className="m-4 overflow-scroll"
+              className="object-contain rounded-lg"
             />
           </div>
         )}
       </div>
 
       <div className="flex flex-col gap-2">
-        <label className="font-semibold">Description</label>
+        <label className="font-semibold font-poppins">Description</label>
         <textarea
-          rows={10}
-          className="border rounded-lg px-4 py-2"
+          rows={6}
           {...register("description")}
-        ></textarea>
+          className="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 resize-none"
+        />
       </div>
 
-      <Button type="submit" onClick={() => console.log("Asim")}>
+      <Button
+        type="submit"
+        className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-lg transition-all"
+      >
         Submit
       </Button>
     </form>

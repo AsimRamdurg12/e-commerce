@@ -10,10 +10,10 @@ const Input = React.forwardRef<HTMLInputElement, Input>(
   ({ className, Icon, ...props }, ref) => {
     return (
       <div className="flex flex-col gap-2">
-        <label htmlFor="name" className="text-start font-semibold">
+        <label htmlFor="name" className="text-start font-semibold font-poppins">
           {props.label}
         </label>
-        <div className="group flex items-center border border-gray-500 px-2 rounded-lg focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent">
+        <div className="group flex items-center border border-gray-500 px-2 rounded-lg focus-within:outline-none focus-within:ring-2 focus-within:ring-yellow-500 transition-all">
           {Icon}
           <input
             {...props}
