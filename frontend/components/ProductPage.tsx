@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const ProductPage = ({ id }: { id: number }) => {
   const { products, isLoading, isError, error } = useProduct(
-    "productbyId",
+    ["productbyId", id],
     `/products/${id}`
   );
 
@@ -27,10 +27,10 @@ const ProductPage = ({ id }: { id: number }) => {
   }
 
   return isLoading ? (
-    <div className="min-h-screen w-full flex justify-center items-center animate-spin">
-      <BiLoader size={30} />
+    <div className="h-full w-full flex justify-center items-center">
+      <BiLoader size={30} className="animate-spin" />
     </div>
-  ) : (
+  ) : products ? (
     <section className="space-y-4">
       <div>
         <p className="font-bold font-serif">{`Home > ${products.category}`}</p>
@@ -105,7 +105,7 @@ const ProductPage = ({ id }: { id: number }) => {
         </div>
       </div>
     </section>
-  );
+  ) : null;
 };
 
 export default ProductPage;

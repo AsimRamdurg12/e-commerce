@@ -6,13 +6,17 @@ import logo from "@/assets/logo.svg";
 import { useProduct } from "@/hooks/useProduct";
 import { CgSearch, CgShoppingCart } from "react-icons/cg";
 import Button from "./ui/Button";
-import { useStore } from "@/store/store";
+import { useCartStore, useStore } from "@/store/store";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const { products } = useProduct("categories", "/products/categories");
 
   const { searchTerm, selectedCategory, setSearchTerm, setSelectedCategory } =
     useStore();
+
+  const { cart } = useCartStore();
+  const router = useRouter();
 
   return (
     <nav className="fixed z-1 bg-white w-full flex justify-between items-center px-4 py-2 border-b">
@@ -50,10 +54,13 @@ const Navbar = () => {
         </Button>
       </div>
 
-      <div className="flex items-center">
+      <Button
+        className="flex items-center"
+        onClick={() => router.replace("/cart")}
+      >
         <CgShoppingCart />
-        <p className="">5</p>
-      </div>
+        <p className="">{cart.length}</p>
+      </Button>
     </nav>
   );
 };

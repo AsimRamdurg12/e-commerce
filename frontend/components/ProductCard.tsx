@@ -11,12 +11,13 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, setModal }: ProductCardProps) {
   return (
-    <div className="relative rounded-3xl p-2 drop-shadow-2xl hover:shadow-xl bg-white flex flex-col justify-between mx-4">
+    <div className="relative rounded px-2 hover:shadow-xl bg-white flex flex-col justify-between py-4">
       <div
+        key={product.id}
         onClick={() => setModal({ open: true, id: product.id })}
         className="flex flex-col justify-between cursor-pointer"
       >
-        <div className="w-full h-48 flex items-center justify-center bg-white rounded-3xl drop-shadow-lg border border-gray-200">
+        <div className="w-full h-48 flex items-center justify-center bg-white rounded border border-gray-200">
           <Image
             src={product.image}
             alt={product.title}
@@ -35,9 +36,9 @@ export default function ProductCard({ product, setModal }: ProductCardProps) {
               <p>{product.rating.count} ratings</p>
             </div>
           </div>
-          <p className="text-sm text-gray-600 line-clamp-2">
+          {/* <p className="text-sm text-gray-600 line-clamp-2">
             {product.description}
-          </p>
+          </p> */}
           <p className="text-orange-400 font-semibold my-2">${product.price}</p>
         </div>
       </div>

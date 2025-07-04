@@ -39,7 +39,7 @@ const Products = () => {
       <RiLoader4Line className="animate-spin" />
     </div>
   ) : (
-    <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-20 pb-10">
+    <div className="relative grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-20 pb-10 mx-4">
       {filteredProducts.map((product: Product) => (
         <ProductCard product={product} key={product.id} setModal={setModal} />
       ))}
@@ -47,7 +47,6 @@ const Products = () => {
       {modal.open && (
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center ">
           <div className="bg-white max-w-lg h-4/5 md:h-full md:max-w-4xl w-full rounded-lg p-6 relative my-10 mx-2 overflow-y-auto">
-            {/* Close Button */}
             <button
               className="absolute px-4 top-2 right-2 text-gray-600 hover:text-black text-2xl"
               onClick={() => setModal({ open: false, id: 0 })}
@@ -55,8 +54,7 @@ const Products = () => {
               x
             </button>
 
-            {/* Product Details */}
-            <ProductPage id={modal.id} />
+            <ProductPage key={modal.id} id={modal.id} />
           </div>
         </div>
       )}
