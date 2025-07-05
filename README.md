@@ -14,10 +14,10 @@ This is a modern, responsive **e-commerce product listing page** built using **R
 ![alt text](image.png)
 
 **Cart Page**
-![alt text](image-1.png)
+![alt text](public/image-1.png)
 
 **Product Modal**
-![alt text](image-2.png)
+![alt text](public/image-2.png)
 
 ## ✨ Features
 
