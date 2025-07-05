@@ -39,7 +39,7 @@ const Products = () => {
       <RiLoader4Line size={50} className="animate-spin" />
     </div>
   ) : (
-    <div className="relative grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-20 pb-10 mx-4">
+    <div className="relative grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 pb-10 mx-4">
       {filteredProducts.map((product: Product) => (
         <ProductCard product={product} key={product.id} setModal={setModal} />
       ))}
