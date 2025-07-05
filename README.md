@@ -11,7 +11,7 @@ This is a modern, responsive **e-commerce product listing page** built using **R
 ## Screenshots
 
 **Products Page**
-![alt text](image.png)
+![alt text](public/image.png)
 
 **Cart Page**
 ![alt text](public/image-1.png)
